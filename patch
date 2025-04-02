@@ -12,3 +12,22 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 ros2 launch dsr_bringup2 dsr_bringup2_rviz.launch.py mode:=virtual host:=127.0.0.1 port:=12345 model:=m1013
 
+
+## moveit 오류
+플러그인 및 플래너 패키지 설치
+sudo apt update
+sudo apt install \
+  ros-humble-moveit \
+  ros-humble-moveit-ros-visualization \
+  ros-humble-moveit-visual-tools \
+  ros-humble-moveit-planners-ompl \
+  ros-humble-moveit-planners-chomp \
+  ros-humble-moveit-plugins \
+  ros-humble-moveit-simple-controller-manager
+
+② 빌드 환경 다시 설정
+cd ~/ros2_ws
+rm -rf build/ install/ log/
+colcon build --symlink-install
+source /opt/ros/humble/setup.bash
+source install/setup.bash
